@@ -85,3 +85,6 @@ router.delete('/deletenote/:id',fetchUser,async(req,rep)=>{
     }
 })
 module.exports=router;
+
+// "authtoken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjY2YzdiOG
+// NlNmFlNjk4NjI2MTE0ZDg1In0sImlhdCI6MTcxODM4NTg5OX0.-pM3tQAMLfOOJBw6XRw5YKkWd0Za0DqkjebPHsHCE9A"
