@@ -40,30 +40,41 @@ router.post('/addnote',fetchUser,[
 
 // ROUTE 3 : Update an existing Note using : PUT "/api/note/updatenote" .Login required
 
-router.put('/updatenote/:id',fetchUser,async(req,rep)=>{
-    const {title,description,tag}=req.body;
-    try{
-        const newNote={};
-        if(title) {newNote.title=title};
-        if(description){newNote.description=description};
-        if(tag){newNote.tag=tag};
-        let note=Note.findById(req.params.id);
-        if(!note){
-            rep.status(404).send("Not Found");
+router.put('/updatenote/:id', fetchUser, async (req, res) => {
+    const { title, description, tag } = req.body;
+
+    try {
+        // Create a newNote object
+        const newNote = {};
+        if (title) newNote.title = title;
+        if (description) newNote.description = description;
+        if (tag) newNote.tag = tag;
+
+        // Find the note to be updated
+        let note = await Note.findById(req.params.id);
+        if (!note) {
+            return res.status(404).send("Not Found");
         }
-        if(note.user.toString()!==req.params.id){
-            rep.status(401).send("Not allowed");
+
+        // Check if the user owns this note
+        if (note.user.toString() !== req.user.id) {
+            return res.status(401).send("Not Allowed");
         }
-        note=await Note.findByIdAndUpdate(req.params.id,
-            { $set:newNote },
-            { new:true})
-            rep.json({note});
-    }
-    catch(error){
+
+        // Update the note
+        note = await Note.findByIdAndUpdate(
+            req.params.id,
+            { $set: newNote },
+            { new: true }
+        );
+
+        res.json(note);
+    } catch (error) {
         console.error(error.message);
-        rep.status(500).send('Internal server error');
+        res.status(500).send('Internal Server Error');
     }
-}) 
+});
+
 
 // ROUTE : 4 Delete an existing note using : DELETE '/api/notes/deletenote'.Login required
 router.delete('/deletenote/:id',fetchUser,async(req,rep)=>{
@@ -85,6 +96,3 @@ router.delete('/deletenote/:id',fetchUser,async(req,rep)=>{
     }
 })
 module.exports=router;
-
-// "authtoken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjY2YzdiOG
-// NlNmFlNjk4NjI2MTE0ZDg1In0sImlhdCI6MTcxODM4NTg5OX0.-pM3tQAMLfOOJBw6XRw5YKkWd0Za0DqkjebPHsHCE9A"
