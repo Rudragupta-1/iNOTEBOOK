@@ -76,23 +76,28 @@ router.put('/updatenote/:id', fetchUser, async (req, res) => {
 });
 
 
-// ROUTE : 4 Delete an existing note using : DELETE '/api/notes/deletenote'.Login required
-router.delete('/deletenote/:id',fetchUser,async(req,rep)=>{
-    try{
-        let note=await Note.find(req.params.id);
-        if(!note){
-            return rep.send(404).send("Not found");
+
+// ROUTE : 4 Delete an existing note using : DELETE '/api/notes/deletenote/:id'. Login required
+router.delete('/deletenote/:id', fetchUser, async (req, res) => {
+    try {
+        let note = await Note.findById(req.params.id);
+        if (!note) {
+            return res.status(404).send("Not found");
         }
-        if(note.user.toString()!==req.user.id){
-            return rep.status(401).send("Not allowed");
+        // Allow deletion only if user owns this Note
+        if (note.user.toString() !== req.user.id) {
+            return res.status(401).send("Not allowed");
         }
-        note=await Note.findByIdAndDelete(req.params.id);
-        rep.json({"Success":"Note has been deleted",
-            note:note
-        })
-    }catch{
+
+        note = await Note.findByIdAndDelete(req.params.id);
+
+        res.json({
+            "Success": "Note has been deleted",
+            note: note
+        });
+    } catch (error) {
         console.error(error.message);
-        rep.status(500).send("Internal server error");
+        res.status(500).send("Internal server error");
     }
-})
+});
 module.exports=router;
