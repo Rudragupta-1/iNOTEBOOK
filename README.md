@@ -1,8 +1,8 @@
-# iNotebook: Notes on Cloud
+# iNOTEBOOK: Notes on Cloud
 
 ## Overview
 
-iNotebook is a cloud-based note-taking application built using the MERN stack (MongoDB, Express, React, Node.js). The project provides a full-fledged environment for users to create, read, update, and delete their notes. Authentication and authorization are handled using JWT tokens to ensure data security and privacy.
+iNOTEBOOK is a cloud-based note-taking application built using the MERN stack (MongoDB, Express, React, Node.js). The project provides a full-fledged environment for users to create, read, update, and delete their notes. Authentication and authorization are handled using JWT tokens to ensure data security and privacy.
 
 ## Table of Contents
 
@@ -45,7 +45,7 @@ iNotebook is a cloud-based note-taking application built using the MERN stack (M
 
 1. Clone the repository
    ```bash
-   git clone https://github.com/your-username/iNotebook.git
+   git clone https://github.com/your-username/iNOTEBOOK.git
    cd iNotebook
    ```
 
@@ -158,10 +158,5 @@ iNotebook/
 
 Contributions are welcome! Please fork the repository and create a pull request with your changes.
 
-## License
 
-This project is licensed under the MIT License.
-
----
-
-For any further questions or help, feel free to contact the repository owner. Happy coding!
+For any further questions or help, feel free to contact me. Happy coding!
