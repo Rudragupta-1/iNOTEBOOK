@@ -115,7 +115,7 @@ const Notes = () => {
               >
                 Close
               </button>
-              <button type="button"onClick={handleClick} className="btn btn-primary">
+              <button disabled={note.title.length<5 || note.description.length<5} type="button"onClick={handleClick} className="btn btn-primary">
                 Update Note
               </button>
             </div>
@@ -124,8 +124,12 @@ const Notes = () => {
       </div>
       <div>
         <h2>Your Notes</h2>
+        <div>
+          {notes.length===0 && "No notes to display"}
+        </div>
         {notes.map((note) => {
           return (
+            
             <Noteitem key={note._id} updateNote={updateNote} note={note} />
           );
         })}
