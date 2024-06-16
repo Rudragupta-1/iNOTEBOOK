@@ -31,6 +31,7 @@ const NoteState = (props) => {
     });
     const note=await response.json();
     setNotes(notes.concat(note));
+    props.showAlert('Added Successfully','success')
   };
   // Delete a note
   const deleteNote =async (id) => {
@@ -71,6 +72,7 @@ const NoteState = (props) => {
       }
     }
     setNotes(newNotes);
+    props.showAlert('Updated Successfully','success')
   };
 
   return (
