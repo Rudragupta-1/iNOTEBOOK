@@ -11,7 +11,7 @@ const AddNote = () => {
     const onChange=(e)=>{
         setNote({...note,[e.target.name]:e.target.value})
     }
-  return ( 
+  return (  
     <div className="container my-3">
         <h2>Add a Note</h2>
       <form className="my-3">
@@ -37,6 +37,16 @@ const AddNote = () => {
           />
         </div>
         
+        <div className="form-group">
+          <label htmlFor="exampleInputPassword1">Tag</label>
+          <input
+            type="text"
+            className="form-control"
+            id="tag"
+            name="tag"
+            onChange={onChange}
+          />
+        </div>
         <button type="submit" className="btn btn-primary" onClick={handleClick}>
           Add Note
         </button>

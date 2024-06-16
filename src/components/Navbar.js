@@ -30,7 +30,7 @@ const Navbar = () => {
                 }`}
                 aria-current="page"
                 to="/"
-              >
+               >
                 Home
               </Link>
             </li>

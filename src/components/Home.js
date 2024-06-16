@@ -1,5 +1,4 @@
 import Notes from './Notes'
-import AddNote from './AddNote';
 const Home = () => {
  
   return (
@@ -10,3 +9,4 @@ const Home = () => {
 };
 
 export default Home;
+  

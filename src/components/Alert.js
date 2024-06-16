@@ -8,6 +8,6 @@ const Alert = (props) => {
 </div>
     </div>
   )
-}
+} 
 
 export default Alert
