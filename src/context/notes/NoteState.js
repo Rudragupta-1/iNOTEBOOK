@@ -15,7 +15,6 @@ const NoteState = (props) => {
       },
     });
     const json=await  response.json();
-   
     setNotes(json);
   }
 
@@ -43,8 +42,7 @@ const NoteState = (props) => {
           "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjY2YzdiOGNlNmFlNjk4NjI2MTE0ZDg1In0sImlhdCI6MTcxODQ2MjEzOH0.4cg1oPX--iUu31b5d7S-xiGgiP2ThfSw1M8nngcV2cc",
       },
     });
-    const json=response.json();
-    console.log(json);
+    const json=await response.json();
     const newNotes = notes.filter((note) => {
       return note._id !== id;
     });

@@ -25,7 +25,6 @@ const Notes = () => {
   };
 
   const handleClick = (e) => {
-    console.log(`updating the note ${note}`);
     e.preventDefault();
     // eslint-disable-next-line 
     editNote(note.id,note.title,note.description,note.tag)
