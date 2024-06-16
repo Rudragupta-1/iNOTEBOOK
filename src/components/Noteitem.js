@@ -1,21 +1,24 @@
-import React ,{useContext}from "react";
+import React, { useContext } from "react";
 import noteContext from "../context/notes/noteContext";
 
 const Noteitem = (props) => {
-  const context=useContext(noteContext)
-  const {deleteNote}=context
-  const { note ,updateNote} = props;
+  const context = useContext(noteContext);
+  const { deleteNote } = context;
+  const { note, updateNote } = props;
+
   return (
     <div className="col-md-3 d-flex">
-      <div className="card my-3 ">
-        <div className="card-body ">
-            <div className="d-flex align-items-center">
-          <h5 className="card-title">{note.title}</h5>
-          <i className="fa-solid fa-trash mx-2" onClick={()=>{deleteNote(note._id);props.showAlert('Deleted Successfully','success')}}></i>
-          <i className="fa-regular fa-pen-to-square mx-2" onClick={()=>{updateNote(note);}}></i>
+      <div className="note-card my-3">
+        <div className="note-card-body">
+          <div className="card-icon-container">
+            <h5 className="note-card-title">{note.title}</h5>
+            <div className="icon-spacing">
+              <i className="fa-solid fa-trash note-card-icons mx-2" onClick={() => { deleteNote(note._id); props.showAlert('Deleted Successfully', 'success'); }}></i>
+              <i className="fa-regular fa-pen-to-square note-card-icons mx-2" onClick={() => { updateNote(note); }}></i>
+            </div>
           </div>
-          <p className="card-text">{note.description}</p>
-         </div>
+          <p className="note-card-text">{note.description}</p>
+        </div>
       </div>
     </div>
   );

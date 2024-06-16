@@ -2,13 +2,19 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import noteContext from "../context/notes/noteContext";
 import Noteitem from "./Noteitem";
 import AddNote from "./AddNote";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const Notes = (props) => {
+  const navigate = useNavigate();
   const context = useContext(noteContext);
-  const { notes, getNotes ,editNote} = context;
+  const { notes, getNotes, editNote } = context;
 
   useEffect(() => {
-    getNotes();
+    if (localStorage.getItem('token')) {
+      getNotes();
+    } else {
+      navigate('/login');
+    }
   }, []);
 
   const ref = useRef(null);
@@ -26,18 +32,17 @@ const Notes = (props) => {
 
   const handleClick = (e) => {
     e.preventDefault();
-    // eslint-disable-next-line 
-    editNote(note.id,note.title,note.description,note.tag)
+    editNote(note.id, note.title, note.description, note.tag);
     closeRef.current.click();
   };
 
   return (
-    <>
+    <div className="home-note-css">
       <AddNote />
 
       <button
         type="button"
-        className="btn btn-primary d-none"
+        className="btn btn-primary d-none imnmn-button"
         data-bs-toggle="modal"
         data-bs-target="#exampleModal"
         ref={ref}
@@ -46,7 +51,7 @@ const Notes = (props) => {
       </button>
 
       <div
-        className="modal fade"
+        className="modal fade imnmn-modal"
         id="exampleModal"
         tabIndex="-1"
         role="dialog"
@@ -55,7 +60,7 @@ const Notes = (props) => {
       >
         <div className="modal-dialog" role="document">
           <div className="modal-content">
-            <div className="modal-header">
+            <div className="modal-header imnmn-modal-header">
               <h5 className="modal-title" id="exampleModalLabel">
                 Edit Note
               </h5>
@@ -68,9 +73,9 @@ const Notes = (props) => {
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <div className="modal-body">
-              <form className="my-3">
-                <div className="form-group mb-3">
+            <div className="modal-body imnmn-modal-body">
+              <form className="my-3 imnmn-form">
+                <div className="form-group mb-3 imnmn-form-group">
                   <label htmlFor="title" className="form-label">Title</label>
                   <input
                     type="text"
@@ -81,7 +86,7 @@ const Notes = (props) => {
                     onChange={onChange}
                   />
                 </div>
-                <div className="form-group">
+                <div className="form-group imnmn-form-group">
                   <label htmlFor="description">Description</label>
                   <input
                     type="text"
@@ -92,7 +97,7 @@ const Notes = (props) => {
                     onChange={onChange}
                   />
                 </div>
-                <div className="form-group">
+                <div className="form-group imnmn-form-group">
                   <label htmlFor="tag">Tag</label>
                   <input
                     type="text"
@@ -105,35 +110,37 @@ const Notes = (props) => {
                 </div>
               </form>
             </div>
-            <div className="modal-footer">
+            <div className="modal-footer imnmn-modal-footer">
               <button
                 type="button"
-                ref={closeRef} 
+                ref={closeRef}
                 className="btn btn-secondary"
                 data-bs-dismiss="modal"
               >
                 Close
               </button>
-              <button disabled={note.title.length<5 || note.description.length<5} type="button"onClick={handleClick} className="btn btn-primary">
+              <button disabled={note.title.length < 5 || note.description.length < 5} type="button" onClick={handleClick} className="btn btn-primary">
                 Update Note
               </button>
             </div>
           </div>
         </div>
       </div>
-      <div>
+      <div className="imnmn-notes-container">
         <h2>Your Notes</h2>
         <div>
-          {notes.length===0 && "No notes to display"}
+          {notes.length === 0 && "No notes to display"}
         </div>
-        {notes.map((note) => {
-          return (
-            
-            <Noteitem key={note._id} updateNote={updateNote} showAlert={props.showAlert} note={note} />
-          );
-        })}
+        <div className="imnmn-notes-grid">
+          {notes.map((note) => {
+            return (
+              <Noteitem key={note._id} updateNote={updateNote} showAlert={props.showAlert} note={note} />
+            );
+          })}
+        </div>
       </div>
-    </>
+      </div>
+    
   );
 };
 

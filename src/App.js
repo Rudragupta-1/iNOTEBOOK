@@ -7,7 +7,7 @@ import Home from "./components/Home";
 import NoteState from "./context/notes/NoteState";
 import Alert from "./components/Alert";
 import Signup from "./components/Signup";
-
+import './App.css'
 function App() {
   const [alert, setAlert] = useState(null);
 
@@ -25,7 +25,7 @@ function App() {
       <Router>
         <Navbar />
         <Alert alert={alert}/>
-        <div className="container">
+        <div className="container xg">
           <Routes>
             <Route exact path="/" element={<Home showAlert={showAlert}/>} />
             <Route exact path="/about" element={<About />} />

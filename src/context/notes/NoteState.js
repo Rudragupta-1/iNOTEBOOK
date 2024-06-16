@@ -11,7 +11,7 @@ const NoteState = (props) => {
       headers: {
         "Content-Type": "application/json",
         "auth-token":
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjY2YzdiOGNlNmFlNjk4NjI2MTE0ZDg1In0sImlhdCI6MTcxODQ2MjEzOH0.4cg1oPX--iUu31b5d7S-xiGgiP2ThfSw1M8nngcV2cc",
+          localStorage.getItem('token'),
       },
     });
     const json=await  response.json();
@@ -25,7 +25,7 @@ const NoteState = (props) => {
       headers: {
         "Content-Type": "application/json",
         "auth-token":
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjY2YzdiOGNlNmFlNjk4NjI2MTE0ZDg1In0sImlhdCI6MTcxODQ2MjEzOH0.4cg1oPX--iUu31b5d7S-xiGgiP2ThfSw1M8nngcV2cc",
+          localStorage.getItem('token'),
       },
       body: JSON.stringify({title,description,tag}),
     });
@@ -40,7 +40,7 @@ const NoteState = (props) => {
       headers: {
         "Content-Type": "application/json",
         "auth-token":
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjY2YzdiOGNlNmFlNjk4NjI2MTE0ZDg1In0sImlhdCI6MTcxODQ2MjEzOH0.4cg1oPX--iUu31b5d7S-xiGgiP2ThfSw1M8nngcV2cc",
+          localStorage.getItem('token'),
       },
     });
     const json=await response.json();
@@ -56,7 +56,7 @@ const NoteState = (props) => {
       headers: {
         "Content-Type": "application/json",
         "auth-token":
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjY2YzdiOGNlNmFlNjk4NjI2MTE0ZDg1In0sImlhdCI6MTcxODQ2MjEzOH0.4cg1oPX--iUu31b5d7S-xiGgiP2ThfSw1M8nngcV2cc",
+          localStorage.getItem('token'),
       },
       body: JSON.stringify({title,description,tag}),
     });
