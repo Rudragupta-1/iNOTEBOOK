@@ -4,7 +4,7 @@ import NoteContext from "./noteContext";
 const NoteState = (props) => {
   const notesInitial=[];
   const[notes,setNotes]=useState(notesInitial)
-  const host = "http://localhost:5000";
+  const host = "https://inotebook-5-sheh.onrender.com";
   const getNotes=async ()=>{
     const response = await fetch(`${host}/api/notes/fetchallnotes`, {
       method: "GET",

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const mongoURI = "mongodb://localhost:27017";
+const mongoURI = "mongodb+srv://guptarudra901:NE39W7ERvc9jxLFY@cluster0.d9tigig.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 const connectToMongo = () => {
     mongoose.connect(mongoURI)
     .then(() => {
@@ -12,3 +12,4 @@ const connectToMongo = () => {
 };
 
 module.exports = connectToMongo;
+// NE39W7ERvc9jxLFY
