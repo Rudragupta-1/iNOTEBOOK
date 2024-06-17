@@ -1,12 +1,11 @@
 const mongoose = require('mongoose');
 
-const mongoURI = process.env.MONGODB_URI; // Use environment variable for MongoDB URI
+const mongoURI = process.env.MONGODB_URI;
 
 const connectToMongo = () => {
     mongoose.connect(mongoURI, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
-        useCreateIndex: true, // Optional: to suppress deprecation warning
     })
     .then(() => {
         console.log("Connected to MongoDB successfully");
