@@ -1,8 +1,13 @@
 const mongoose = require('mongoose');
 
-const mongoURI = "mongodb+srv://guptarudra901:NE39W7ERvc9jxLFY@cluster0.d9tigig.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+const mongoURI = process.env.MONGODB_URI; // Use environment variable for MongoDB URI
+
 const connectToMongo = () => {
-    mongoose.connect(mongoURI)
+    mongoose.connect(mongoURI, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        useCreateIndex: true, // Optional: to suppress deprecation warning
+    })
     .then(() => {
         console.log("Connected to MongoDB successfully");
     })
@@ -12,4 +17,3 @@ const connectToMongo = () => {
 };
 
 module.exports = connectToMongo;
-// NE39W7ERvc9jxLFY
