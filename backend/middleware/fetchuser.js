@@ -1,5 +1,5 @@
 var jwt=require('jsonwebtoken')
-const JWT_SECRET='rudra';
+const JWT_SECRET = process.env.JWT_SECRET;
 const fetchuser=(req,rep,next)=>{
         const token=req.header('auth-token');
         if(!token){
